@@ -4,12 +4,18 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
-  @apply bg-brick-50 text-charcoal font-sans antialiased;
+  @apply bg-brick-50 text-charcoal font-sans antialiased overflow-x-hidden;
 }
 
 ::selection {
   @apply bg-brick-600 text-white;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }

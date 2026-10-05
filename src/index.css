@@ -2,20 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-}
-
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
   @apply bg-brick-50 text-charcoal font-sans antialiased overflow-x-hidden;
 }
+::selection { @apply bg-brick-600 text-white; }
+img { max-width: 100%; height: auto; }
 
-::selection {
-  @apply bg-brick-600 text-white;
+/* Grain overlay */
+.grain::before {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-img {
-  max-width: 100%;
-  height: auto;
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.img-zoom {
+  @apply overflow-hidden;
+}
+.img-zoom img {
+  @apply transition duration-700 ease-out will-change-transform;
+}
+.img-zoom:hover img {
+  transform: scale(1.06);
+}
+
+.glass-header {
+  background: rgba(250, 246, 243, 0.78);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
 }

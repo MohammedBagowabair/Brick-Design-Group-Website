@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-brick-50 text-charcoal font-sans antialiased;
+}
+
+::selection {
+  @apply bg-brick-600 text-white;
+}
